@@ -1,8 +1,9 @@
 package com.example.restaurantmanagement.repository;
 
+import com.example.restaurantmanagement.model.OrderItems;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderItems extends JpaRepository<OrderItems, Long> {
+public interface OrderItemsRepository extends JpaRepository<OrderItems, Long> {
 }

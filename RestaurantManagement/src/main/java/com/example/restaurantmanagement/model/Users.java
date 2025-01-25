@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Date;
+import java.util.List;
 
 @Entity(name = "users")
 @Data
@@ -21,7 +22,7 @@ public class Users implements UserDetails {
     private String email;
 
     @Column(name = "date_of_birth", nullable = false)
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
@@ -30,35 +31,37 @@ public class Users implements UserDetails {
     private String password;
 
     @Column(nullable = false)
-    private boolean deleted;
+    private boolean deleted = false;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
-    private Roles role;
+    @JoinColumn(name = "role_id")
+    private Roles roles;
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
+@Override
+public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority(roles.getName()));
+
+}
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
+
 }

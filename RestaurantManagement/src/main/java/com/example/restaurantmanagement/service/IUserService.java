@@ -11,5 +11,5 @@ public interface IUserService {
     ReqRes getUsersById(Integer id);
     ReqRes deleteUser(Integer userId);
     ReqRes updateUser(Integer userId, Users updatedUser);
-    ReqRes getMyInfo(String email);
+    ReqRes getMyInfo(String username);
 }

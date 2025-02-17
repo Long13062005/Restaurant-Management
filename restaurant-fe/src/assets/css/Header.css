@@ -1,0 +1,32 @@
+/* App.css */
+.background {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/ryukingdom-48b31.appspot.com/o/restaurant%2FHeader%2FHeader.jpg?alt=media&token=343a04c7-8e98-4296-bcff-5f633c4df903'),
+                      url('https://firebasestorage.googleapis.com/v0/b/ryukingdom-48b31.appspot.com/o/restaurant%2FHeader%2FHeader2.jpg?alt=media&token=3737542d-1d6d-48fe-873f-6425eef57e1b'),
+                      url('https://firebasestorage.googleapis.com/v0/b/ryukingdom-48b31.appspot.com/o/restaurant%2FHeader%2FHeader3.jpg?alt=media&token=9fadf8e1-2c39-4845-92e3-5f1a60ab6eca');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 80vh;
+    animation: slideBackground 15s linear infinite;
+}
+
+@keyframes slideBackground {
+    0% {
+        background-position: 0% 50%, 0% 50%, 0% 50%;
+    }
+    33% {
+        background-position: 100% 50%, 0 50%, 0 50%;
+    }
+    66% {
+        background-position: 100% 50%, 100% 50%, 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%, 100% 50%, 100% 50%;
+    }
+}
+.slide-background .slide {
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+  background-position: center;
+}

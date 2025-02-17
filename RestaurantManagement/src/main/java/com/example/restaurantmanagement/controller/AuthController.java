@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,7 @@ public class AuthController {
 
 
     @GetMapping("/admin/get-all-users")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ReqRes> getAllUsers(){
         System.out.println("the controller is called");
         return ResponseEntity.ok(userService.getAllUsers());
@@ -53,12 +55,14 @@ public class AuthController {
     }
 
     @GetMapping("/admin/get-users/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ReqRes> getUSerByID(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.getUsersById(userId));
 
     }
 
     @PutMapping("/admin/update/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ReqRes> updateUser(@PathVariable Integer userId, @RequestBody Users reqres){
         return ResponseEntity.ok(userService.updateUser(userId, reqres));
     }
@@ -72,6 +76,7 @@ public class AuthController {
     }
 
     @DeleteMapping("/admin/delete/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ReqRes> deleteUSer(@PathVariable Integer userId){
         return ResponseEntity.ok(userService.deleteUser(userId));
     }

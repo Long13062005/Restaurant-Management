@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SVN-Nexa Rust';
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'SVN-Nexa Rust', sans-serif;
+}

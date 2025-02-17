@@ -21,7 +21,7 @@ public class Orders {
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable = false)
-    private Users customerId;
+    private Customer customerId;
 
     @Column(name="order_date", nullable = false)
     @CreationTimestamp
